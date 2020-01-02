@@ -1,0 +1,6 @@
+<package id="A">
+    <dependency>
+        <package id="A"/>
+    </dependency>
+</package>
+
