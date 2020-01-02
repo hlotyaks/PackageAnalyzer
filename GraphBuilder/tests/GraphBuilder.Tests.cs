@@ -42,6 +42,21 @@ namespace PackageAnalyzer.Graph.Tests
         }
 
         [TestMethod]
+        public void SimpleTest3()
+        {
+            GraphBuilder gb = GraphTestUtilities.PopulateGB("simple3");
+
+            Assert.AreEqual(3, gb.Graph.NodeCount);
+
+            Assert.AreEqual(2, gb.Graph.Edges("A").Count);
+
+            Assert.AreEqual(0, gb.Graph.Edges("B").Count);
+
+            Assert.AreEqual(0, gb.Graph.Edges("C").Count);
+        }
+
+
+        [TestMethod]
         [ExpectedException(typeof(GraphBuilderException))]
         public void FailTest1()
         {

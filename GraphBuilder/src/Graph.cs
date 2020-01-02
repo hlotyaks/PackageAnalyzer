@@ -38,13 +38,15 @@ namespace PackageAnalyzer
             {
                 nodes[V].Add(E);
             }
-            
-            nodes.Add(V, new List<string>());
-            nodes[V].Add(E);
+            else
+            {  
+                nodes.Add(V, new List<string>());
+                nodes[V].Add(E);
+            }
 
         }
 
-        private bool CyclicUtility(string V, Dictionary<string, bool> visited, Dictionary<string, bool> recursive)
+        private bool IsCyclicInternal(string V, Dictionary<string, bool> visited, Dictionary<string, bool> recursive)
         {
             if (!visited[V])
             {
@@ -53,7 +55,7 @@ namespace PackageAnalyzer
 
                 foreach (string E in nodes[V])
                 {
-                    if (!visited[E] && CyclicUtility(E, visited, recursive))
+                    if (!visited[E] && IsCyclicInternal(E, visited, recursive))
                     {
                         return true;
                     }
@@ -86,7 +88,7 @@ namespace PackageAnalyzer
 
                 foreach (string V in nodes.Keys)
                 {
-                    if (CyclicUtility(V, visited, recursive))
+                    if (IsCyclicInternal(V, visited, recursive))
                     {
                         return true;
                     }
