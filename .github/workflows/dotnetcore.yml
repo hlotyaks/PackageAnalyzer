@@ -16,4 +16,4 @@ jobs:
     - name: Build with dotnet
       run: dotnet build  GraphBuilder/GraphBuilder.sln --configuration Release
     - name: Run tests
-      run: dotnet test .\tests\tests.csproj -v n
+      run: dotnet test GraphBuilder/tests/tests.csproj -v n
