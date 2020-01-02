@@ -4,4 +4,4 @@
 
 Project|Build Status
 ---|---
-GraphBuilder|![](https://github.com/hlotyaks/PackageAnalyzer/workflows/.NET%20Core/badge.svg)
+GraphBuilder|![Build Status](https://github.com/hlotyaks/PackageAnalyzer/workflows/.NET%20Core/badge.svg)
