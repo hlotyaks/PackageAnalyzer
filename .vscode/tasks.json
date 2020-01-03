@@ -10,7 +10,7 @@
             "args": [
                 "build",
                 // project
-                "${workspaceFolder}\\GraphBuilder\\src\\GraphBuilder.csproj"
+                "${workspaceFolder}\\GraphBuilder\\src\\GraphBuilder.csproj",
                 // Ask dotnet build to generate full paths for file names.
                 "/property:GenerateFullPaths=true",
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel

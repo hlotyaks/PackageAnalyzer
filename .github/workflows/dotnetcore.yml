@@ -13,7 +13,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
-    - name: Build with dotnet
+    - name: Build - GraphBuilder
       run: dotnet build  GraphBuilder/GraphBuilder.sln -c Release
-    - name: Run tests
+    - name: Build - PackageHasher
+      run: dotnet build  PackageHasher/PackageHasher.sln -c Release
+    - name: Test - GraphBuilder 
       run: dotnet test GraphBuilder/tests/tests.csproj -c Release -v m
+    - name: Test - PackageHasher 
+      run: dotnet test PackageHasher/tests/tests.csproj -c Release -v m
