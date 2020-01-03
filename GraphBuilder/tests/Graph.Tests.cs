@@ -6,7 +6,7 @@ namespace PackageAnalyzer.Tests
     public class GraphTests
     {
         [TestMethod]
-        public void SimpleCycleTest1()
+        public void SimpleGraphCycleTest1()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simplecycle1");
 
@@ -14,7 +14,7 @@ namespace PackageAnalyzer.Tests
         }
 
         [TestMethod]
-        public void SimpleCycleTest2()
+        public void SimpleGraphCycleTest2()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simplecycle2");
 
@@ -23,7 +23,7 @@ namespace PackageAnalyzer.Tests
 
         
         [TestMethod]
-        public void SimpleCycleTest3()
+        public void SimplGraphCycleTest3()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simplecycle3");
 
@@ -31,7 +31,7 @@ namespace PackageAnalyzer.Tests
         }
 
         [TestMethod]
-        public void SimpleCycleTest4()
+        public void SimpleGraphCycleTest4()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simplecycle4");
 
@@ -39,7 +39,7 @@ namespace PackageAnalyzer.Tests
         }
 
         [TestMethod]
-        public void IntermediateCycleTest1()
+        public void IntermediateGraphCycleTest1()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("intermediatecycle1");
 
