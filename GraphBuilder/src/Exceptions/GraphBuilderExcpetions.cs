@@ -1,7 +1,7 @@
 using System;
 
 
-namespace PackageAnalyzer
+namespace PackageAnalyzer.Exceptions
 {
     public class GraphBuilderException : Exception
     {
