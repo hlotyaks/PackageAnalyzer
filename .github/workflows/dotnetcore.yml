@@ -15,9 +15,15 @@ jobs:
         dotnet-version: 2.2.108
     - name: Build - GraphBuilder
       run: dotnet build  GraphBuilder/GraphBuilder.sln -c Release
-    - name: Build - PackageHasher
-      run: dotnet build  PackageHasher/PackageHasher.sln -c Release
     - name: Test - GraphBuilder 
       run: dotnet test GraphBuilder/tests/tests.csproj -c Release -v m
+
+    - name: Build - PackageHasher
+      run: dotnet build  PackageHasher/PackageHasher.sln -c Release
     - name: Test - PackageHasher 
       run: dotnet test PackageHasher/tests/tests.csproj -c Release -v m
+
+    - name: Build - PackageBuilder
+      run: dotnet build  PackageBuilder/PackageBuilder.sln -c Release
+    - name: Test - PackageBuilder 
+      run: dotnet test PackageBuilder/tests/tests.csproj -c Release -v m
