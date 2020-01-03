@@ -10,7 +10,7 @@ namespace PackageAnalyzer.Tests
 
 
         [TestMethod]
-        public void SimpleTest1()
+        public void SimpleGraphBuilderTest1()
         {
             GraphBuilder gb = new GraphBuilder();
 
@@ -29,7 +29,7 @@ namespace PackageAnalyzer.Tests
         }
 
                 [TestMethod]
-        public void SimpleTest2()
+        public void SimpleGraphBuilderTest2()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simple2");
 
@@ -42,7 +42,7 @@ namespace PackageAnalyzer.Tests
         }
 
         [TestMethod]
-        public void SimpleTest3()
+        public void SimpleGraphBuilderTest3()
         {
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simple3");
 
@@ -58,7 +58,7 @@ namespace PackageAnalyzer.Tests
 
         [TestMethod]
         [ExpectedException(typeof(GraphBuilderException))]
-        public void FailTest1()
+        public void FailGraphBuilderTest1()
         {
             // tests the top level package field is malformed
             GraphBuilder gb = GraphTestUtilities.PopulateGB("failure1");        
