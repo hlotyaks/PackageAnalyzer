@@ -57,7 +57,7 @@ namespace PackageAnalyzer.Tests
 
 
         [TestMethod]
-        [ExpectedException(typeof(GraphBuilderException))]
+        [ExpectedException(typeof(Exceptions.GraphBuilderException))]
         public void FailGraphBuilderTest1()
         {
             // tests the top level package field is malformed
