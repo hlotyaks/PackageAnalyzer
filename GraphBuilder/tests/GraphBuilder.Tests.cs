@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PackageAnalyzer;
 using System.IO;
 
-namespace PackageAnalyzer.Graph.Tests
+namespace PackageAnalyzer.Tests
 {
     [TestClass]
     public class GraphBuilderTests
