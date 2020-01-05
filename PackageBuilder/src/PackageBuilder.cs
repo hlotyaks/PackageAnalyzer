@@ -9,8 +9,8 @@ namespace PackageAnalyzer
     public class PackageBuilder
     {
         // location relative to specified rootFolder.
-        const string PACKAGE_DESCRIPTIONS = @"\packages\descriptions\";
-        const string PACKAGE_CACHE = @"\packages\cache\";
+        const string PACKAGE_DESCRIPTIONS = @"\pkgs\descriptions\";
+        const string PACKAGE_CACHE = @"\pkgs\cache\";
         const string PACKAGE_SOURCE = @"\src\";
         const string PACKAGE_OUTPUT = @"\output\";
         const string PACKAGE_EXTENSION = ".zip";

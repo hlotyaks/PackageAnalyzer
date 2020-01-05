@@ -9,7 +9,7 @@ namespace PackageAnalyzer.Tests
     [TestClass]
     public class PackageBuilderTests
     {
-        string packagedescriptions = @"\packages\descriptions";   
+        string packagedescriptions = @"\pkgs\descriptions";   
         string packagesource = @"\src";    
 
         private void CleanOutput(string testroot)
