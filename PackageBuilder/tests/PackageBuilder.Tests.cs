@@ -22,7 +22,7 @@ namespace PackageAnalyzer.Tests
 
         private void CleanCache(string testroot, List<string> excludeList = null)
         {
-            foreach (string f in Directory.GetFiles($"{testroot}\\packages\\cache"))
+            foreach (string f in Directory.GetFiles($"{testroot}\\pkgs\\cache"))
             {
                 if (excludeList == null)
                 {
