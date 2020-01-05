@@ -10,7 +10,7 @@ namespace PackageAnalyzer
 {
     public class PackageHasher
     {
-        public async Task<Dictionary<string, string>> HashFoldersAsync(List<string> folders, string rootPath)
+        public static async Task<Dictionary<string, string>> HashFoldersAsync(List<string> folders, string rootPath)
         {
             Dictionary<string, string> hashedFolders = new Dictionary<string, string>();
 
@@ -34,7 +34,7 @@ namespace PackageAnalyzer
         }
 
 
-        async Task<(string folder, string folderwithhash)> HashFolderAsync(DirectoryInfo folder, string rootPath = "", string searchPattern = "*", SearchOption searchOption = SearchOption.AllDirectories)
+        static async Task<(string folder, string folderwithhash)> HashFolderAsync(DirectoryInfo folder, string rootPath = "", string searchPattern = "*", SearchOption searchOption = SearchOption.AllDirectories)
         {
             using(var alg = MD5.Create())
             {

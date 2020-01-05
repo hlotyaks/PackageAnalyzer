@@ -24,7 +24,9 @@ namespace PackageAnalyzer.Tests
 
             Assert.AreEqual(1, gb.Graph.NodeCount);
 
-            Assert.AreEqual(0, gb.Graph.Edges("A").Count);
+            Assert.AreEqual(0, gb.Graph.Paths("A").Count);
+
+            Assert.AreEqual(0, gb.Graph.Children("A").Count);
 
         }
 
@@ -35,10 +37,11 @@ namespace PackageAnalyzer.Tests
 
             Assert.AreEqual(2, gb.Graph.NodeCount);
 
-            Assert.AreEqual(1, gb.Graph.Edges("A").Count);
+            Assert.AreEqual(1, gb.Graph.Paths("A").Count);
 
-            Assert.AreEqual(0, gb.Graph.Edges("B").Count);
+            Assert.AreEqual(0, gb.Graph.Paths("B").Count);
 
+            Assert.AreEqual(1, gb.Graph.Children("B").Count);
         }
 
         [TestMethod]
@@ -48,11 +51,19 @@ namespace PackageAnalyzer.Tests
 
             Assert.AreEqual(3, gb.Graph.NodeCount);
 
-            Assert.AreEqual(2, gb.Graph.Edges("A").Count);
+            Assert.AreEqual(2, gb.Graph.Paths("A").Count);
 
-            Assert.AreEqual(0, gb.Graph.Edges("B").Count);
+            Assert.AreEqual(0, gb.Graph.Paths("B").Count);
 
-            Assert.AreEqual(0, gb.Graph.Edges("C").Count);
+            Assert.AreEqual(0, gb.Graph.Paths("C").Count);
+
+            Assert.IsTrue(gb.Graph.Paths("A").Contains("B"));
+
+            Assert.IsTrue(gb.Graph.Paths("A").Contains("C"));
+
+            Assert.AreEqual(1, gb.Graph.Children("B").Count);
+
+            Assert.AreEqual(1, gb.Graph.Children("C").Count);
         }
 
 

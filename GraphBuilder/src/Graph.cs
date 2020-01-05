@@ -5,45 +5,76 @@ namespace PackageAnalyzer
 {
     public class Graph
     {
-        private Dictionary<string, List<string>> nodes;
-
+        private Dictionary<string, List<string>> directednodes;
+        private Dictionary<string, List<string>> parentnodes;
         public Graph()
         {
-            nodes = new Dictionary<string, List<string>>();
+            directednodes = new Dictionary<string, List<string>>();
+            parentnodes = new Dictionary<string, List<string>>();
+        }
+
+        public List<string> Paths(string V)
+        {
+            return directednodes[V];
         }
 
         public int NodeCount
         {
-            get { return nodes.Keys.Count; }
+            get { return directednodes.Keys.Count; }
         }
 
-        public List<string> Edges(string node)
+        public List<string> Children(string node)
         {
-            return nodes[node];
+            return parentnodes[node];
         }
 
         public void AddEdge(string V)
         {
-            if (nodes.ContainsKey(V))
+            if (!directednodes.ContainsKey(V))
             {
-                return;
+                directednodes.Add(V, new List<string>());
             }
 
-            nodes.Add(V, new List<string>());
+            if (!parentnodes.ContainsKey(V))
+            {
+                parentnodes.Add(V, new List<string>());
+            }
+            
         }
 
         public void AddEdge(string V, string E)
         {
-            if (nodes.ContainsKey(V))
+            // Add vertex and edge information
+            // Example:
+            //      A <= B
+            //      B is the vertex and A is the edge between B and A
+            //      A is also the parent of B
+            if (directednodes.ContainsKey(V))
             {
-                nodes[V].Add(E);
+                directednodes[V].Add(E);
             }
             else
             {  
-                nodes.Add(V, new List<string>());
-                nodes[V].Add(E);
+                directednodes.Add(V, new List<string>());
+                directednodes[V].Add(E);
             }
 
+            // If this vertex has not been seen yet also store it as a possible parent
+            if(!parentnodes.ContainsKey(V))
+            {
+                parentnodes.Add(V, new List<string>());
+            }
+
+            // Add the edge and vertex parent information
+            if (parentnodes.ContainsKey(E))
+            {
+                parentnodes[E].Add(V);
+            } 
+            else
+            {
+                parentnodes.Add(E, new List<string>());
+                parentnodes[E].Add(V);
+            }
         }
 
         private bool IsCyclicInternal(string V, Dictionary<string, bool> visited, Dictionary<string, bool> recursive)
@@ -53,7 +84,7 @@ namespace PackageAnalyzer
                 visited[V] = true;
                 recursive[V] = true;
 
-                foreach (string E in nodes[V])
+                foreach (string E in directednodes[V])
                 {
                     if (!visited[E] && IsCyclicInternal(E, visited, recursive))
                     {
@@ -80,13 +111,13 @@ namespace PackageAnalyzer
                 Dictionary<string, bool> recursive = new Dictionary<string, bool>();
 
                 // initialize the search...
-                foreach (string V in nodes.Keys)
+                foreach (string V in directednodes.Keys)
                 {
                     visited.Add(V,false);
                     recursive.Add(V,false);
                 }
 
-                foreach (string V in nodes.Keys)
+                foreach (string V in directednodes.Keys)
                 {
                     if (IsCyclicInternal(V, visited, recursive))
                     {
