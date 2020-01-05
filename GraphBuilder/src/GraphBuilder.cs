@@ -47,7 +47,7 @@ namespace PackageAnalyzer
             }
             catch (Exception e)
             {
-                throw new GraphBuilderException("Malformed package description file.", e);
+                throw new Exceptions.GraphBuilderException("Malformed package description file.", e);
             }
 
             // get dependency section
@@ -62,7 +62,7 @@ namespace PackageAnalyzer
                 }
                 catch (Exception e)
                 {
-                    throw new GraphBuilderException("Malformed dependency tag in description file.", e);
+                    throw new Exceptions.GraphBuilderException("Malformed dependency tag in description file.", e);
                 }
             }
 

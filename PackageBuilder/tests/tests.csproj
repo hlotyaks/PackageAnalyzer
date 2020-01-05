@@ -17,8 +17,14 @@
     <ProjectReference Include="..\src\PackageBuilder.csproj" />
   </ItemGroup>
 
+
+
   <ItemGroup>
-    <None Update="testcases\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+
+    <None Update="testcases\**" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
+  <Target Name="PrepareTestCase" BeforeTargets="Build">
+          <Message Importance="high" Text="Test Message" />
+  </Target>
 </Project>
