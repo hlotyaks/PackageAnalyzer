@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GraphBuilder\src\GraphBuilder.csproj" />
+    <ProjectReference Include="..\..\PackageBuilder\src\PackageBuilder.csproj" />
+    <ProjectReference Include="..\..\PackageHasher\src\PackageHasher.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
