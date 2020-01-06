@@ -45,6 +45,12 @@ namespace PackageAnalyzer
             
             Dictionary<string, bool> packageBuildResults = new Dictionary<string, bool>();
 
+            // Initialize the results collection
+            foreach (string node in g.Nodes)
+            {
+                packageBuildResults.Add(node,false);
+            }
+
             BuildPackages(packages, hash, g, packageBuildResults);
 
             return packageBuildResults;
@@ -84,8 +90,13 @@ namespace PackageAnalyzer
                         forceBuild = true;
                     }
                 }
+                bool result = BuildPackage(package, hash, forceBuild);
 
-                buildResults.Add(package, BuildPackage(package, hash, forceBuild));
+                if (result)
+                {
+                    buildResults[package] = result;
+                }
+                
 
                 children.AddRange(g.Children(package));
             }
@@ -132,6 +143,8 @@ namespace PackageAnalyzer
         {
             string source = $"{_sourceRoot}{package}";
             string dest = $"{_outputRoot}{packageHashName}.zip";
+
+            File.Delete($"{_outputRoot}{packageHashName}.zip");
 
             ZipFile.CreateFromDirectory($"{_sourceRoot}{package}", $"{_outputRoot}{packageHashName}.zip");
         }

@@ -13,6 +13,16 @@ namespace PackageAnalyzer
             parentnodes = new Dictionary<string, List<string>>();
         }
 
+        public string[] Nodes
+        {
+            get
+            {
+                string[] nodes = new string[directednodes.Keys.Count];
+                directednodes.Keys.CopyTo(nodes, 0);
+                return nodes;
+            }
+        }
+
         public List<string> Paths(string V)
         {
             return directednodes[V];

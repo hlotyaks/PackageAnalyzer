@@ -228,5 +228,44 @@ namespace PackageAnalyzer.Tests
                 Assert.IsTrue(buildResults["E"]);                
             }
         }
+
+        [TestMethod]
+        public void IntermediateBuilderTest2()
+        {
+            //
+            // cache contains a pre built A and B. A and B do not build.  C will build.
+            //
+
+            string cwd = Directory.GetCurrentDirectory();
+            string testroot = $"{cwd}\\testcases\\intermediate1";
+ 
+            GraphBuilder gb = new GraphBuilder($"{testroot}{packagedescriptions}");
+
+            DirectoryInfo di = new DirectoryInfo($"{testroot}{packagesource}");
+            List<string> paths = di.GetDirectories().Select(d => d.FullName).ToList();
+            var task = Task.Run(async () => await PackageHasher.HashFoldersAsync(paths, testroot));
+
+            // package source to package source hash mapping
+            Dictionary<string, string> packageSourceHash = task.Result;
+
+            List<string> excludeList = new List<string>();
+            excludeList.Add(packageSourceHash["A"]);
+            excludeList.Add(packageSourceHash["B"]);
+            excludeList.Add(packageSourceHash["C"]);
+            excludeList.Add(packageSourceHash["D"]);
+            excludeList.Add(packageSourceHash["E"]);
+            CleanCache(testroot, excludeList);
+            
+            {
+                CleanOutput(testroot);
+                PackageBuilder pb = new PackageBuilder(testroot);
+                Dictionary<string, bool> buildResults = pb.Build("A", $"{testroot}{packagesource}", packageSourceHash, gb.Graph);
+                Assert.IsFalse(buildResults["A"]);
+                Assert.IsFalse(buildResults["B"]);
+                Assert.IsFalse(buildResults["C"]);
+                Assert.IsFalse(buildResults["D"]);
+                Assert.IsFalse(buildResults["E"]);                
+            }
+        }
     }
 }

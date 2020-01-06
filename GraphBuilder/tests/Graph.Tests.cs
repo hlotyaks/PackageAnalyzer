@@ -11,6 +11,7 @@ namespace PackageAnalyzer.Tests
             GraphBuilder gb = GraphTestUtilities.PopulateGB("simplecycle1");
 
             Assert.IsTrue(gb.Graph.IsCyclic);
+            Assert.AreEqual(2, gb.Graph.Nodes.Length);
         }
 
         [TestMethod]
@@ -63,7 +64,9 @@ namespace PackageAnalyzer.Tests
             Assert.AreEqual(1, gb.Graph.Children("D").Count);
             Assert.IsTrue(gb.Graph.Children("D").Contains("E"));
 
-            Assert.AreEqual(0, gb.Graph.Children("E").Count);                        
+            Assert.AreEqual(0, gb.Graph.Children("E").Count);       
+
+            Assert.AreEqual(5, gb.Graph.Nodes.Length);                 
         }
     }
 }
