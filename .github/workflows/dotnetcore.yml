@@ -27,3 +27,6 @@ jobs:
       run: dotnet build  PackageBuilder/PackageBuilder.sln -c Release
     - name: Test - PackageBuilder 
       run: dotnet test PackageBuilder/tests/tests.csproj -c Release -v m
+
+    - name: Build - ConsoleTest
+      run: dotnet build  ConsoleTest/ConsoleTest.sln -c Release
