@@ -17,7 +17,7 @@ The console test can be built and published with the following command:
 
 ## Interesting things learned in this project
 You can copy test cases to the output directory by using the following in your test project file
-    ```
+    ```html
     <ItemGroup>
         <None Update="testcases\**\*.*" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
