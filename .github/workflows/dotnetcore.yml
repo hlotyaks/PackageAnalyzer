@@ -1,6 +1,12 @@
-name: .NET Core
+name: package-analyzer-build
 
-on: [push]
+on: 
+  push: 
+    branches: 
+      - '**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -8,11 +14,11 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 2.2.108
+        dotnet-version: 3.1.x
     - name: Build - GraphBuilder
       run: dotnet build  GraphBuilder/GraphBuilder.sln -c Release
     - name: Test - GraphBuilder 
