@@ -2,10 +2,8 @@ name: Update Markdown
 
 on:
   workflow_run:
-    workflows:
-      - package-analyzer-build
-    types:
-      - completed
+    workflows: ["package-analyzer-build"]
+    types: [completed]
 
 jobs:
   auto-update-readme:
