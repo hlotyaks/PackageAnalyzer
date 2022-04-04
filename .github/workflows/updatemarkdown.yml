@@ -12,11 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.workflow_run.head_branch }}
-    - run: git branch
+#      with:
+#        ref: ${{ github.event.workflow_run.head_branch }}
+#    - run: git branch
 
     - name: Run Autodocs
       uses: dineshsonachalam/markdown-autodocs@v1.0.4
       with:
+        output_file_paths: '[./README.md]'
         categories: '[code-block]'
