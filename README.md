@@ -30,6 +30,5 @@ You can copy test cases to the output directory by using the following in your t
 
 ## Running the GraphBuilder
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src-.\ConsoleTest\src\Program.cs&19-21) -->
-
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src-./ConsoleTest/src/Program.cs) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
