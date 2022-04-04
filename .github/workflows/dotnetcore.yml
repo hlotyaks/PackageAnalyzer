@@ -1,6 +1,7 @@
 name: package-analyzer-build
 
-on: [push]
+on: 
+  - push
 
 jobs:
   build:
